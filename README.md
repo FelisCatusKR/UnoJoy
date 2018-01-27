@@ -20,12 +20,12 @@ Installing Drivers
  On Windows, you should run *UnoJoyDriverInstaller.bat*. you'll also need to download and install [Atmel's FLIP tool](http://www.atmel.com/tools/FLIP.aspx).
  On Mac OS X, you should run one of these files, *LionUnoJoyDrivers.pkg* or *SnowLeopardUnoJoyDrivers.pkg*, depends on your system.
  On Linux, you'll need to install *dfu-programmer*. you can get it by typing to your terminal:
-	sudo apt-get install dfu-programmer
+    sudo apt-get install dfu-programmer
 or
-	sudo aptitude install dfu-programmer 
+    sudo aptitude install dfu-programmer 
 depending on your distribution. You can also build it from [source](https://github.com/dfu-programmer/dfu-programmer).
  You also have to make the flashing script runnable by typing:
-	chmod +x TurnIntoAJoystick.sh
+    chmod +x TurnIntoAJoystick.sh
 into your terminal when in UnoJoy directory.
 
 Uploading Sketch
@@ -37,40 +37,38 @@ Configuring Hardware
 --------------------
  Now that we have the proper code on the Arduino, you need to reprogram the communications chip on the Arduino. In order to do this, you need to first put the Arduino into 'Arduino UNO DFU' mode. The official documentation for this is [here](http://arduino.cc/en/Hacking/DFUProgramming8U2)
  You do that by shorting two of the pins on the block of 6 pins between the USB connector.  Using a piece of wire or other small metal object, connect the 2 pins closes to the USB connector together. (the ones that turn from o to | in the diagram)
-	         o o o                    | o o 
-	|----|   o o o           |----|   | o o
-	|    |                   |    |
-	|USB |          ---->    |USB |
-	|    |                   |    |
-	|----|                   |----|
+>              o o o                    | o o 
+>     |----|   o o o           |----|   | o o
+>     |    |                   |    |
+>     |USB |          ---->    |USB |
+>     |    |                   |    |
+>     |----|                   |----|
  It should disconnect (be-dun.) and reconnect (buh-din!) and now show up to your system as 'Arduino UNO DFU'. In OSX, you will get no feedback from your computer, but the lights on the Arduino will stop flashing.
  Once the Arduino is in DFU mode, to update the firmware, simply click:
-	Windows: TurnIntoAJoystick.bat
-	OSX:     TurnIntoAJoystick.command
-	Linux:   ./TurnIntoAJoystic.sh
+    Windows: TurnIntoAJoystick.bat
+    OSX:     TurnIntoAJoystick.command
+    Linux:   ./TurnIntoAJoystic.sh
 > IMPORTANT: Once you update the firmware, you'll need to unplug and plug the Arduino back in for it to show up with the new firmware - it'll just hang out in DFU mode until you do.
  When you plug the Arduino in again now, it will show up to your computer as an 'UnoJoy Joystick'. You can check this by doing the steps in the next section.
 
 HOW TO CHECK WHICH MODE YOU ARE IN
 ----------------------------------
-On Windows 7 or above, you can check it out by going to:
-	Start->Devices and Printers
-	and you should see it there under 'Unspecified'
-	In Arduino mode, it will appear as 'Arduino UNO (COM 23)'
-	In DFU mode, it will appear as 'Arduino UNO DFU'
-	In UnoJoy mode, it will appear at the top as 'UnoJoy Joystick'
-
-On OSX, you should see it:
-	Snow Leopard: Apple->About This Mac->More Info...->USB
-	Lion: Apple->About This Mac->More Info...->System Report->USB
-	You may need to refresh (command-R) to see it update.
-	In Arduino mode, it will appear as 'Arduino UNO'
-	In DFU mode, it will appear as 'Arduino UNO DFU'
-	In UnoJoy mode, it will appear at the top as 'UnoJoy Joystick'
-	
-On Linux, you can type lsusb to your terminal.
-	In response you'll get list of all connected usb devices.
-	From there you should find:
-	In Arduino mode, you should see  a device named Arduino Uno etc.
-	In DFU mode, you should see  a device named Atmel corp. etc.
-	In UnoJoy mode, you should see a device named Cygnal Integrated Products etc.
+ On Windows 7 or above, you can check it out by going to:
+> Start->Devices and Printers
+> and you should see it there under 'Unspecified'
+> In Arduino mode, it will appear as 'Arduino UNO (COM 23)'
+> In DFU mode, it will appear as 'Arduino UNO DFU'
+> In UnoJoy mode, it will appear at the top as 'UnoJoy Joystick'
+ On OSX, you should see it:
+> Snow Leopard: Apple->About This Mac->More Info...->USB
+> Lion: Apple->About This Mac->More Info...->System Report->USB
+> You may need to refresh (command-R) to see it update.
+> In Arduino mode, it will appear as 'Arduino UNO'
+> In DFU mode, it will appear as 'Arduino UNO DFU'
+> In UnoJoy mode, it will appear at the top as 'UnoJoy Joystick'
+ On Linux, you can type lsusb to your terminal.
+> In response you'll get list of all connected usb devices.
+> From there you should find:
+> In Arduino mode, you should see  a device named Arduino Uno etc.
+> In DFU mode, you should see  a device named Atmel corp. etc.
+> In UnoJoy mode, you should see a device named Cygnal Integrated Products etc.
